@@ -25,6 +25,11 @@ public class AuthorDAO extends BaseDAO<Author>
 		return saveWithId("INSERT INTO tbl_author (authorName) values (?)", new Object[] {author.getAuthorName()});
 	}
 	
+	public void editAuthor(Author author) throws ClassNotFoundException, SQLException
+	{
+		save("UPDATE tbl_author SET authorName = ? WHERE authorId = ?", new Object[] {author.getAuthorName(), author.getAuthorId()});
+	}
+	
 	public void deleteAuthor(Author author) throws ClassNotFoundException, SQLException
 	{
 		save("DELETE FROM tbl_author WHERE authorId = ?", new Object[] {author.getAuthorId()});
@@ -39,6 +44,11 @@ public class AuthorDAO extends BaseDAO<Author>
 	{
 		searchString = "%"+searchString+"%";
 		return read("SELECT * FROM tbl_author WHERE authorName LIKE ?", new Object[] { searchString });
+	}
+	
+	public void insertBookAuthors(Integer bookId, Integer authorId) throws ClassNotFoundException, SQLException
+	{
+		save("INSERT INTO tbl_book_authors (bookId, authorId) VALUES (?,?)", new Object[] {bookId, authorId});
 	}
 	
 	@Override

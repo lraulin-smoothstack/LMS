@@ -24,7 +24,12 @@ public class BorrowerDAO extends BaseDAO<Borrower>
 	{
 		return saveWithId("INSERT INTO tbl_borrower (name, address, phone) values (?,?,?)", new Object[] {borrower.getName(),borrower.getAddress(),borrower.getPhone()});
 	}
-	
+	public void editBorrower(Borrower borrower) throws ClassNotFoundException, SQLException
+	{
+		save("UPDATE tbl_borrower SET name = ? WHERE cardNo = ?", new Object[] {borrower.getName(), borrower.getCardNo()});
+		save("UPDATE tbl_borrower SET address = ? WHERE cardNo = ?", new Object[] {borrower.getAddress(), borrower.getCardNo()});
+		save("UPDATE tbl_borrower SET phone = ? WHERE cardNo = ?", new Object[] {borrower.getPhone(), borrower.getCardNo()});
+	}
 	public void deleteBorrower(Borrower borrower) throws ClassNotFoundException, SQLException
 	{
 		save("DELETE FROM tbl_borrower WHERE cardNo = ?", new Object[] {borrower.getCardNo()});

@@ -24,7 +24,12 @@ public class BranchDAO extends BaseDAO<Branch>
 	{
 		return saveWithId("INSERT INTO tbl_library_branch (branchName, branchAddress) values (?)", new Object[] {branch.getBranchName(),  branch.getAddress()});
 	}
-	
+	public void editBranch(Branch branch) throws ClassNotFoundException, SQLException
+	{
+		save("UPDATE tbl_branch SET branchName = ? WHERE branchId = ?", new Object[] {branch.getBranchName(), branch.getBranchId()});
+		save("UPDATE tbl_branch SET branchAddress = ? WHERE branchId = ?", new Object[] {branch.getAddress(), branch.getBranchId()});
+		
+	}
 	public void deleteBranch(Branch branch) throws ClassNotFoundException, SQLException
 	{
 		save("DELETE FROM tbl_library_branch WHERE branchId = ?", new Object[] {branch.getBranchId()});

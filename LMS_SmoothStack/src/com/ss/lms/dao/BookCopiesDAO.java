@@ -25,6 +25,10 @@ public class BookCopiesDAO extends BaseDAO<BookCopies>
 		return saveWithId("INSERT INTO tbl_book_copies (bookId, branchId, noOfCopies) values (?)", new Object[] {bc.getBookId(),bc.getBranchId(),bc.getNoOfCopies()});
 	}
 	
+	public void editBookCopies(BookCopies bc) throws ClassNotFoundException, SQLException
+	{
+		save("UPDATE tbl_book_copies SET noOfCopies = ? WHERE bookId = ? && branchId = ?", new Object[] {bc.getNoOfCopies(), bc.getBookId(), bc.getBranchId()});
+	}
 	public void deleteBookCopies(BookCopies bc) throws ClassNotFoundException, SQLException
 	{
 		save("DELETE FROM tbl_book_copies WHERE bookId = ? && branchId = ?", new Object[] {bc.getBookId(), bc.getBranchId()});

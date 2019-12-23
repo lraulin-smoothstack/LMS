@@ -27,6 +27,13 @@ public class BookLoansDAO extends BaseDAO<BookLoans>
 				new Object[] {bl.getBookId(), bl.getBranchId(), bl.getCardNo(), bl.getDateOut(), bl.getDueDate(), bl.getDateIn()});
 	}
 	
+	public void editBookLoans(BookLoans bl) throws ClassNotFoundException, SQLException
+	{
+		save("UPDATE tbl_book_loans SET dateDue = ? WHERE cardNo = ? && bookId = ? && branchId = ? && dateOut = ?",
+				new Object[] {bl.getDueDate(), bl.getCardNo(), bl.getBookId(), bl.getBranchId(), bl.getDateOut()});
+		save("UPDATE tbl_book_loans SET dateIn = ? WHERE cardNo = ? && bookId = ? && branchId = ? && dateOut = ?",
+				new Object[] {bl.getDateIn(), bl.getCardNo(), bl.getBookId(), bl.getBranchId(), bl.getDateOut()});
+	}
 	public void deleteBookLoans(BookLoans bl) throws ClassNotFoundException, SQLException
 	{
 		save("DELETE FROM tbl_book_loans WHERE bookId = ? && branchId = ? && cardNo = ? &"
