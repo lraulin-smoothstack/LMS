@@ -9,7 +9,9 @@ import com.ss.lms.services.*;
 public class Console 
 {
 	AdminService adminService = new AdminService();
-	
+	/*
+	 * TODO: TEST ADD, EDIT, DELETE!
+	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException
 	{
 		Console con = new Console();
