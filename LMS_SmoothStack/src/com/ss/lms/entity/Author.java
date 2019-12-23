@@ -1,11 +1,11 @@
-package com.ss.lms.data;
+package com.ss.lms.entity;
 
 import java.util.List;
 
 public class Author 
 {
 	private int authorId;
-	private String author;
+	private String authorName;
 	private List<Book> books;
 	
 	public int getAuthorId() {
@@ -14,11 +14,11 @@ public class Author
 	public void setAuthorId(int authorId) {
 		this.authorId = authorId;
 	}
-	public String getAuthor() {
-		return author;
+	public String getAuthorName() {
+		return authorName;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 	public List<Book> getBooks() {
 		return books;
@@ -26,5 +26,4 @@ public class Author
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
-	
 }

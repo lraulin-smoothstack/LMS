@@ -1,13 +1,21 @@
-package com.ss.lms.data;
+/**
+ * 
+ */
+package com.ss.lms.entity;
 
 import java.util.List;
 
+/**
+ * @author Ashian
+ *
+ */
 public class Book 
 {
 	private int bookId;
 	private String title;
 	private int pubId;
 	private List<Author> authors;
+	
 	public int getBookId() {
 		return bookId;
 	}
@@ -32,5 +40,4 @@ public class Book
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
-	
 }
