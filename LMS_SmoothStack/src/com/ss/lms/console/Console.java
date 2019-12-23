@@ -13,7 +13,7 @@ public class Console
 	public static void main(String[] args) throws SQLException, ClassNotFoundException
 	{
 		Console con = new Console();
-		con.readAuthors();
+		List<Author> authors = con.readAuthors();
 	}
 	
 	public List<Author> readAuthors() throws SQLException{
