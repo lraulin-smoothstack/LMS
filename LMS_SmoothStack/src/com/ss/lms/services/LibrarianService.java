@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.ss.lms.dao.AuthorDAO;
 import com.ss.lms.dao.BookCopiesDAO;
@@ -20,12 +21,12 @@ import com.ss.lms.entity.Borrower;
 import com.ss.lms.entity.Branch;
 import com.ss.lms.entity.Genre;
 
-public class LibrarianService 
+public class LibrarianService extends BaseService
 {
 	ConnectionUtil connUtil = new ConnectionUtil();
 	
 	/*
-	 * READ METHODS:
+	 * READ DAO:
 	 */
 	public List<Author> readAuthors() throws SQLException 
 	{
@@ -160,7 +161,7 @@ public class LibrarianService
 		return genres;
 	}
 	/*
-	 * EDIT:
+	 * EDIT DAO:
 	 */
 	public String editBranch(Branch b) throws SQLException
 	{
@@ -227,4 +228,39 @@ public class LibrarianService
 		return bcs;
 	}
 
+	/**
+	 * 
+	 * @param b
+	 * @throws SQLException
+	 */
+	public void updateBranch(Branch b) throws SQLException
+	{
+		System.out.println("You have chosen to update the Branch with branchId: " + b.getBranchId() + " and"
+				+ "branchName: " + b.getBranchName() + ". Enter 'quit' if you want to stop." );
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Please Enter New Branch Name or Enter 'N/A' for no change:");
+		String input = "";
+		while(input.length()<=0)
+		{
+			input = super.validStringInput();
+			if(input.equalsIgnoreCase("N/A")||input.equalsIgnoreCase("quit"));
+				input = b.getBranchName();
+		}
+		if(input.equalsIgnoreCase("quit"))
+			return;
+		b.setBranchName(input);
+		
+		System.out.println("Please Enter New Branch Address or Enter 'N/A' for no change:");
+		input = "";
+		while(input.length()<=0)
+		{
+			input = super.validStringInput();
+			if(input.equalsIgnoreCase("N/A")||input.equalsIgnoreCase("quit"));
+				input = b.getAddress();
+		}
+		if(input.equalsIgnoreCase("quit"))
+			return;
+		b.setAddress(input);
+		editBranch(b);
+	}
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import com.ss.lms.dao.*;
 import com.ss.lms.entity.*;
 
-public class AdminService {
+public class AdminService extends BaseService {
 	/*
 	 * TODO: 12/23/2019
 	 */
