@@ -32,10 +32,7 @@ public class Console
 		//lbs.stream().forEach(b -> System.out.println (b.getBranchId() + ": " + b.getBranchName()));
 		//List<Genre> genres = con.readGenres();
 		//genres.stream().forEach(b -> System.out.println(b.getGenreId() + ":" + b.getGenreName()));
-		
-		
-		
-		
+			
 	}
 	
 	public List<Author> readAuthors() throws SQLException{
