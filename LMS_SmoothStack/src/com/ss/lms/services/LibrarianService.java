@@ -205,4 +205,25 @@ public class LibrarianService
 		}
 		return "Book Copies Edit Success";
 	}
+	/*
+	 * CONSOLE METHODS:
+	 */
+	public List<BookCopies> readBookCopiesFromBranch(Branch branch) throws SQLException
+	{
+		Connection conn = null;
+		List<BookCopies> bcs = new ArrayList<>();
+		try {
+			conn = connUtil.getConnection();
+			BookCopiesDAO bcdao = new BookCopiesDAO(conn);
+			bcs = bcdao.readBookCopiesFromBranch(branch);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			System.out.println("Reading books faiiled");
+		} finally {
+			if (conn != null) {
+				conn.close();
+			}
+		}
+		return bcs;
+	}
 }

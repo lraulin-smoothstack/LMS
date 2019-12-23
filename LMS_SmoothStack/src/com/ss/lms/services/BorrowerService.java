@@ -5,16 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ss.lms.dao.AuthorDAO;
-import com.ss.lms.dao.BookCopiesDAO;
-import com.ss.lms.dao.BookDAO;
-import com.ss.lms.dao.BranchDAO;
-import com.ss.lms.dao.GenreDAO;
-import com.ss.lms.entity.Author;
-import com.ss.lms.entity.Book;
-import com.ss.lms.entity.BookCopies;
-import com.ss.lms.entity.Branch;
-import com.ss.lms.entity.Genre;
+import com.ss.lms.dao.*;
+import com.ss.lms.entity.*;
 
 public class BorrowerService 
 {
@@ -119,7 +111,84 @@ public class BorrowerService
 	}
 
 	
-	
-	
+	/*
+	 * CONSOLE METHODS:
+	 */
+	public List<BookCopies> readBookCopiesFromBranch(Branch branch) throws SQLException
+	{
+		Connection conn = null;
+		List<BookCopies> bcs = new ArrayList<>();
+		try {
+			conn = connUtil.getConnection();
+			BookCopiesDAO bcdao = new BookCopiesDAO(conn);
+			bcs = bcdao.readBookCopiesFromBranch(branch);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			System.out.println("Reading books faiiled");
+		} finally {
+			if (conn != null) {
+				conn.close();
+			}
+		}
+		return bcs;
+	}
+	public String checkOutBook(BookLoans bl) throws SQLException
+	{
+		Connection conn = null;
+		try
+		{
+			conn = connUtil.getConnection();
+			BookLoansDAO bldao = new BookLoansDAO(conn);
+			BookCopiesDAO bcdao = new BookCopiesDAO(conn);
+			bldao.saveBookLoans(bl);
+			BookCopies bc = new BookCopies();
+			bc.setBookId(bl.getBookId());
+			bc.setBranchId(bl.getBranchId());
+			bc.setNoOfCopies(bc.getNoOfCopies()-1);
+			bcdao.editBookCopies(bc);
+		} catch (ClassNotFoundException | SQLException e)
+		{
+			e.printStackTrace();
+			System.out.println("Checking out book failed");
+			if(conn != null) {
+				conn.rollback();
+			}
+		} finally
+		{
+			if(conn != null) {
+				conn.close();
+			}
+		}
+		return "CheckOutBookWorks";
+	}
+	public String checkInBook(BookLoans bl) throws SQLException
+	{
+		Connection conn = null;
+		try
+		{
+			conn = connUtil.getConnection();
+			BookLoansDAO bldao = new BookLoansDAO(conn);
+			BookCopiesDAO bcdao = new BookCopiesDAO(conn);
+			bldao.saveBookLoans(bl);
+			BookCopies bc = new BookCopies();
+			bc.setBookId(bl.getBookId());
+			bc.setBranchId(bl.getBranchId());
+			bc.setNoOfCopies(bc.getNoOfCopies()+1);
+			bcdao.editBookCopies(bc);
+		} catch (ClassNotFoundException | SQLException e)
+		{
+			e.printStackTrace();
+			System.out.println("Checking out book failed");
+			if(conn != null) {
+				conn.rollback();
+			}
+		} finally
+		{
+			if(conn != null) {
+				conn.close();
+			}
+		}
+		return "CheckOutBookWorks";
+	}
 	
 }

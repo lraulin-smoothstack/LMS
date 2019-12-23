@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ss.lms.entity.BookCopies;
+import com.ss.lms.entity.Branch;
 
 public class BookCopiesDAO extends BaseDAO<BookCopies> 
 {
@@ -37,6 +38,10 @@ public class BookCopiesDAO extends BaseDAO<BookCopies>
 	public List<BookCopies> readBookCopies() throws ClassNotFoundException, SQLException
 	{
 		return read("SELECT * FROM tbl_book_copies", null);
+	}
+	public List<BookCopies> readBookCopiesFromBranch(Branch branch) throws ClassNotFoundException, SQLException
+	{
+		return read("SELECT * FROM tbl_book_copies WHERE branchId = ?", new Object[] {branch.getBranchId()});
 	}
 	
 	

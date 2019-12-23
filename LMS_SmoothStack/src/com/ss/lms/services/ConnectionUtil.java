@@ -16,7 +16,7 @@ public class ConnectionUtil
 	public final String driver = "com.mysql.cj.jdbc.Driver";
 	public final String url = "jdbc:mysql://localhost:3306/library?useSSL=false";
 	public final String username = "root";
-	public final String password = "kodo08yaku";
+	public final String password = "root";
 	/**
 	 * 
 	 * 

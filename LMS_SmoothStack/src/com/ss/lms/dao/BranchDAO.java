@@ -57,7 +57,7 @@ public class BranchDAO extends BaseDAO<Branch>
 			branch.setBranchId(rs.getInt("branchId"));
 			branch.setBranchName(rs.getString("branchName"));
 			branch.setBookCopies(bcdao.readFirstLevel("SELECT * FROM tbl_book_copies WHERE branchId = ?", new Object[] {branch.getBranchId()}));
-			branch.setBookLoans(bldao.readFirstLevel("SELECT * FROM tbl_book_copies WHERE branchId = ?", new Object[] {branch.getBranchId()}));
+			branch.setBookLoans(bldao.readFirstLevel("SELECT * FROM tbl_book_loans WHERE branchId = ?", new Object[] {branch.getBranchId()}));
 			branches.add(branch);
 		}
 		return branches;

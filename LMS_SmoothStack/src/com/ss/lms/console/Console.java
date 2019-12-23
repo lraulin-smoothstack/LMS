@@ -15,9 +15,27 @@ public class Console
 	public static void main(String[] args) throws SQLException, ClassNotFoundException
 	{
 		Console con = new Console();
-		List<Author> authors = con.readAuthors();
+		
+		//List<Author> authors = con.readAuthors();
+		//authors.stream().forEach(author -> System.out.println(author.getAuthorName()));
+		/*
 		List<Book> books = con.readBooks();
-		List<Genre> genres = con.readGenres();
+		books.stream().forEach(o -> System.out.println(o.getTitle()));
+		List<BookCopies> bcs = con.readBookCopies();
+		bcs.stream().forEach(bc -> System.out.println( "bookId = " + bc.getBookId() + " branchId = " + bc.getBranchId() + " noOfCopies: " + bc.getNoOfCopies()));
+		List<BookLoans> bls = con.readBookLoans();
+		bls.stream().forEach(bl -> System.out.println("bookId = " + bl.getBookId() + " branchId = " + bl.getBranchId() + " cardNo = " + bl.getCardNo()));
+		*/
+		//List<Borrower> borrs = con.readBorrowers();
+		//borrs.stream().forEach(b -> System.out.println(b.getCardNo() + ":" + b.getName()));
+		//List<Branch> lbs = con.readBranches();
+		//lbs.stream().forEach(b -> System.out.println (b.getBranchId() + ": " + b.getBranchName()));
+		//List<Genre> genres = con.readGenres();
+		//genres.stream().forEach(b -> System.out.println(b.getGenreId() + ":" + b.getGenreName()));
+		
+		
+		
+		
 	}
 	
 	public List<Author> readAuthors() throws SQLException{
@@ -32,6 +50,22 @@ public class Console
 	{
 		List<Genre> genres = adminService.readGenres();
 		return genres;
+	}
+	public List<BookCopies> readBookCopies() throws SQLException
+	{
+		return adminService.readBookCopies();
+	}
+	public List<BookLoans> readBookLoans() throws SQLException
+	{
+		return adminService.readBookLoans();
+	}
+	public List<Borrower> readBorrowers() throws SQLException
+	{
+		return adminService.readBorrowers();
+	}
+	public List<Branch> readBranches() throws SQLException
+	{
+		return adminService.readBranches();
 	}
 	
 	

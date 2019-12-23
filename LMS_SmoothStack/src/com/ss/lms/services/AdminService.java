@@ -167,6 +167,7 @@ public class AdminService
 				for(Book b: author.getBooks())
 					adao.insertBookAuthors(b.getBookId(), authorId);
 			}
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -194,6 +195,7 @@ public class AdminService
 				for(Author a: book.getAuthors())
 					bdao.insertBookAuthors(bookId, a.getAuthorId());
 			}
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -216,6 +218,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BookCopiesDAO bcdao = new BookCopiesDAO(conn);
 			Integer bookId = bcdao.saveBookCopiesWithId(bc);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -238,6 +241,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BookLoansDAO bldao = new BookLoansDAO(conn);
 			Integer bookId = bldao.saveBookLoansWithId(bl);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -260,6 +264,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BorrowerDAO bdao = new BorrowerDAO(conn);
 			Integer bookId = bdao.saveBorrowerWithId(b);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -282,6 +287,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BranchDAO bdao = new BranchDAO(conn);
 			Integer bookId = bdao.saveBranchWithId(b);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -309,6 +315,7 @@ public class AdminService
 				for(Book b: g.getBooks())
 					dao.insertBookGenre(g.getGenreId(),b.getBookId());
 			}
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -334,6 +341,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			AuthorDAO adao = new AuthorDAO(conn);
 			adao.editAuthor(author);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -355,6 +363,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BookDAO dao = new BookDAO(conn);
 			dao.editBook(book);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -376,6 +385,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BookCopiesDAO dao = new BookCopiesDAO(conn);
 			dao.editBookCopies(bc);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -397,6 +407,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BookLoansDAO dao = new BookLoansDAO(conn);
 			dao.editBookLoans(bl);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -418,6 +429,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BorrowerDAO dao = new BorrowerDAO(conn);
 			dao.editBorrower(b);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -439,6 +451,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BranchDAO dao = new BranchDAO(conn);
 			dao.editBranch(b);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -460,6 +473,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			GenreDAO dao = new GenreDAO(conn);
 			dao.editGenre(g);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -485,6 +499,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			AuthorDAO adao = new AuthorDAO(conn);
 			adao.deleteAuthor(author);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -507,6 +522,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BookDAO dao = new BookDAO(conn);
 			dao.deleteBook(book);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -529,6 +545,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BookCopiesDAO dao = new BookCopiesDAO(conn);
 			dao.deleteBookCopies(bc);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -551,6 +568,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BookLoansDAO dao = new BookLoansDAO(conn);
 			dao.deleteBookLoans(bl);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -573,6 +591,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BorrowerDAO dao = new BorrowerDAO(conn);
 			dao.deleteBorrower(b);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -595,6 +614,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			BranchDAO dao = new BranchDAO(conn);
 			dao.deleteBranch(b);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
@@ -617,6 +637,7 @@ public class AdminService
 			conn = connUtil.getConnection();
 			GenreDAO dao = new GenreDAO(conn);
 			dao.deleteGenre(g);
+			conn.commit();
 		} catch(ClassNotFoundException | SQLException e)
 		{
 			e.printStackTrace();
